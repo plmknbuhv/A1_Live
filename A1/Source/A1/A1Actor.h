@@ -24,5 +24,29 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 protected:
+	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly)
+	TObjectPtr<class UStaticMeshComponent> BodyMesh;
+
+	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly)
+	TObjectPtr<class UStaticMeshComponent> WingMesh;
+
+	UPROPERTY(VisibleAnyWhere, BlueprintReadWrite)
+	float MovementSpeed = 50.0f;
+
+	UPROPERTY(EditAnywhere, Category = Target)
+	TObjectPtr<AActor> TargetActor;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float RotationRate = 45.0f;
+
+protected:
+	UPROPERTY()
 	class UA1Object* Obj;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	int32 Hp = 100;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	int32 Mp = 50;
+	float Speed = 3.5f;
 };
