@@ -20,6 +20,13 @@ public:
 	AA1Character();
 
 protected:
+	UPROPERTY()
+	TObjectPtr<class UA1AnimInstance> A1AnimInstance;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Attack)
+	uint8 bIsAttacking = false;
+
+protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
@@ -30,6 +37,9 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+public:
+	UFUNCTION()
+	void OnAttackMontageEnded(UAnimMontage* Montage, bool bInterrupted);
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TObjectPtr<class USpringArmComponent> SpringArm;
